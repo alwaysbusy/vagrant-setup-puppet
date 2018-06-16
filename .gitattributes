@@ -1,2 +1,2 @@
 *.sh text eol=lf
-/puppet/forge-modules text eol=lf
+/puppet/**/forge-modules text eol=lf

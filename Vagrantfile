@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Set up puppet
     branch.vm.provision :shell, :path => "vagrant-setup/puppet-install.sh"
-    branch.vm.provision :shell, :path => "vagrant-setup/puppet-modules.sh", :args => "/vagrant/puppet/forge-modules " + PUPPET_ENVIRONMENT
+    branch.vm.provision :shell, :path => "vagrant-setup/puppet-modules.sh", :args => "/vagrant/puppet " + PUPPET_ENVIRONMENT
     # Provision with Puppet
     branch.vm.provision :puppet, :environment_path => "puppet/environments", :environment => PUPPET_ENVIRONMENT
 
