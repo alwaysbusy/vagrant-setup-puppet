@@ -9,5 +9,12 @@ node default {
     port => '80',
     docroot => '/var/www/html',
   }
-  include lamp
+
+  class { 'mysql::server' :
+    root_password => 'password',
+  }
+
+  include php
+
+  include serverfiles
 }
