@@ -10,15 +10,16 @@ if(git_branch == "master") then
 end
 GIT_BRANCH = git_branch.gsub(/[\/]/, '_')
 
+PUPPET_DIRECTORY = "/vagrant/puppet"
+PUPPET_ENVIRONMENT = "development"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define GIT_BRANCH, primary: true do |branch|
 
-    PUPPET_ENVIRONMENT = "development"
-
     # Set up puppet
-    branch.vm.provision :shell, :path => "vagrant-setup/puppet-install.sh"
-    branch.vm.provision :shell, :path => "vagrant-setup/puppet-modules.sh", :args => "/vagrant/puppet " + PUPPET_ENVIRONMENT
+    branch.vm.provision :shell, :path => "vagrant-setup/puppet-install.sh", :args => PUPPET_DIRECTORY
+    branch.vm.provision :shell, :path => "vagrant-setup/puppet-modules.sh", :args => PUPPET_DIRECTORY + " " + PUPPET_ENVIRONMENT
     # Provision with Puppet
     branch.vm.provision :puppet, :environment_path => "puppet/environments", :environment => PUPPET_ENVIRONMENT
 

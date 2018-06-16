@@ -1,5 +1,7 @@
 #!/bin/bash
 
+puppetdir=$1
+
 RELEASE_VERSION=`lsb_release -c -s`
 #RELEASE_VERSION=${RELEASE_VERSION::-1}
 
@@ -12,7 +14,7 @@ rm -rf $PUPPET_RELEASE_PACKAGE
 apt update
 apt-get install -y puppet-agent
 
-PUPPET_CONF=/vagrant/puppet/puppet.conf
+PUPPET_CONF=$puppetdir/puppet.conf
 if [ -e $PUPPET_CONF ]; then
     PUPPET_DATA_PATH=/etc/puppetlabs/puppet
     rm -rf $PUPPET_DATA_PATH/puppet.conf
