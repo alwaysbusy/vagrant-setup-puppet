@@ -12,7 +12,9 @@ This repository includes an example of the LAMP stack being installed in the dev
 
 ## Using
 
-1. Copy the `Vagrantfile` along with the `vagrant-setup` and `puppet` directories into your repository.
+When cloning the repository, ensure the `--recursive` option is used to ensure the puppet scripts are available.
+
+1. Copy the `Vagrantfile` along with the `vagrant-setup` and `puppet` directories into your repository. Instead of copying `vagrant-setup`, `.gitmodules` can be copied instead (but this will add a submodule to your project).
 2. Add the contents of the root `.gitignore` and `.gitattributes` to your respective files.
 3. Modify the `forge-modules` files to include a *LF* separated list of the modules needed from forge.
 4. Modify the `manifests` and `modules` directories to suit your code. Follow the standard [puppet documentation](https://puppet.com/docs/puppet) to do so.

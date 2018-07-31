@@ -1,0 +1,3 @@
+[submodule "vagrant-setup"]
+	path = vagrant-setup
+	url = https://github.com/alwaysbusy/puppet-standalone-scripts.git

@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define GIT_BRANCH, primary: true do |branch|
 
     # Set up puppet
-    branch.vm.provision :shell, :path => "vagrant-setup/puppet-install.sh", :args => PUPPET_DIRECTORY
+    branch.vm.provision :shell, :path => "vagrant-setup/puppet-install.sh", :args => PUPPET_DIRECTORY + " --conf"
     branch.vm.provision :shell, :path => "vagrant-setup/puppet-modules.sh", :args => PUPPET_DIRECTORY + " " + PUPPET_ENVIRONMENT
     # Provision with Puppet
     branch.vm.provision :puppet, :environment_path => "puppet/environments", :environment => PUPPET_ENVIRONMENT
